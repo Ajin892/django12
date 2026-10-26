@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Gallery</title>
+
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+</head>
+
+<body>
+
+    <h1>My Image Gallery</h1>
+
+    <img src="https://picsum.photos/300/200?random=1">
+    <p>Beautiful Nature</p>
+
+    <img src="https://picsum.photos/300/200?random=2">
+    <p>Beautiful Landscape</p>
+
+    <img src="https://picsum.photos/300/200?random=3">
+    <p>Beautiful View</p>
+
+    <br>
+
+    <a href="/contact/">Go to Contact Page</a>
+
+    <script src="{% static 'myapp/script.js' %}"></script>
+
+</body>
+
+</html>

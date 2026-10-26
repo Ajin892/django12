@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Library Book Manager{% endblock %}</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 18px; color: #222; }
+    header { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:24px; }
+    h1 { margin:0; font-size:1.7rem; }
+    a, button { cursor:pointer; }
+    .btn { display:inline-block; background:#2457c5; color:white; padding:9px 13px; border:0; border-radius:5px; text-decoration:none; }
+    .btn.secondary { background:#555; } .btn.danger { background:#b42318; }
+    table { width:100%; border-collapse:collapse; margin-top:14px; }
+    th,td { text-align:left; padding:12px 10px; border-bottom:1px solid #ddd; }
+    th { background:#f3f5f8; }
+    .actions { display:flex; gap:8px; align-items:center; }
+    form p { margin:16px 0; } label { display:block; font-weight:bold; margin-bottom:6px; }
+    input { box-sizing:border-box; width:100%; max-width:500px; padding:10px; border:1px solid #bbb; border-radius:4px; }
+    .errorlist { color:#b42318; } .pagination { display:flex; justify-content:space-between; margin-top:22px; }
+    .muted { color:#666; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="{% url 'book_list' %}" style="color:inherit;text-decoration:none">Library Book Manager</a></h1>
+    <a class="btn" href="{% url 'book_create' %}">+ Add book</a>
+  </header>
+  {% block content %}{% endblock %}
+</body>
+</html>

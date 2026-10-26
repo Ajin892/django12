@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Book Management</title>
+</head>
+<body>
+
+    <h1>Library Book Management</h1>
+
+    {% if edit_mode %}
+
+        <h2>Edit Book</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label>Name</label>
+            <input type="text" name="title"
+                   value="{{ book.1 }}" required>
+            <br><br>
+
+            <label>Author</label>
+            <input type="text" name="author"
+                   value="{{ book.2 }}" required>
+            <br><br>
+
+            <label>Year</label>
+            <input type="number" name="year"
+                   value="{{ book.3 }}" required>
+            <br><br>
+
+            <button type="submit">Update Book</button>
+        </form>
+
+        <p><a href="{% url 'home' %}">Cancel</a></p>
+
+    {% else %}
+
+        <h2>Add Book</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label>Name</label>
+            <input type="text" name="title" required>
+            <br><br>
+
+            <label>Author</label>
+            <input type="text" name="author" required>
+            <br><br>
+
+            <label>Year</label>
+            <input type="number" name="year" required>
+            <br><br>
+
+            <button type="submit">Save Book</button>
+        </form>
+
+        <hr>
+
+        <h2>All Books</h2>
+
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for book in books %}
+            <tr>
+                <td>{{ book.0 }}</td>
+                <td>{{ book.1 }}</td>
+                <td>{{ book.2 }}</td>
+                <td>{{ book.3 }}</td>
+
+                <td>
+                    <a href="{% url 'edit_book' book.0 %}">Edit</a>
+
+                    <form method="POST"
+                          action="{% url 'delete_book' book.0 %}">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No books available.</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    {% endif %}
+
+</body>
+</html>

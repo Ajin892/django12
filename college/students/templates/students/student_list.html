@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Students - College System</title>
+<style>body{font-family:Arial;max-width:760px;margin:40px auto;padding:0 18px;color:#202938}a{color:#1459a6}.card{border:1px solid #d9e1ec;border-radius:10px;padding:18px;margin:12px 0}li{padding:5px 0}input,button{padding:9px;margin-top:8px}</style></head>
+<body><p><a href="{% url 'home' %}">← Home</a></p><h1>Students</h1><p>{{ welcome_message }}</p>
+<div class="card"><h2>Student List</h2><ul>{% for student in students %}<li>{{ student }}</li>{% empty %}<li>No students yet.</li>{% endfor %}</ul></div>
+<div class="card"><h2>Add a student (optional)</h2><form method="post" action="{% url 'students:add' %}">{% csrf_token %}<label for="name">Student name:</label><br><input id="name" name="name" required><button type="submit">Add Student</button></form></div>
+<p><a href="{% url 'teachers:list' %}">Go to Teachers</a></p></body></html>

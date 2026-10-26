@@ -1,0 +1,11 @@
+{% extends "books/base.html" %}
+{% block title %}{{ heading }} | Library{% endblock %}
+{% block content %}
+<h2>{{ heading }}</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn" type="submit">Save book</button>
+  <a class="btn secondary" href="{% url 'book_list' %}">Cancel</a>
+</form>
+{% endblock %}

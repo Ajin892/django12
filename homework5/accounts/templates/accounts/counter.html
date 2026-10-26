@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visit Counter</title>
+</head>
+<body>
+    <h1>Visit Counter</h1>
+
+    <p>Welcome, {{ request.user.username }}!</p>
+    <p>You have visited this page <strong>{{ count }}</strong> time(s) in this session.</p>
+
+    <p><a href="{% url 'counter' %}">Visit this page again</a></p>
+
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+    </form>
+</body>
+</html>

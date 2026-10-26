@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ABC School — Students</title>
+</head>
+<body>
+    <h1>ABC School</h1>
+    <h2>Student List</h2>
+    {% for student in students %}
+        <div class="student">
+            <span>{{ student }}</span>
+            <a href="{% url 'result' student %}">View Result</a>
+        </div>
+    {% empty %}
+        <p>No students found.</p>
+    {% endfor %}
+</body>
+</html>
